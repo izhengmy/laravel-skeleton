@@ -24,8 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('telescope:prune --hours=168')->daily();
+
+        $schedule->command('horizon:snapshot')->everyFiveMinutes();
     }
 
     /**
@@ -37,6 +38,7 @@ class Kernel extends ConsoleKernel
     {
         $this->load(__DIR__.'/Commands');
 
+        /** @noinspection PhpIncludeInspection */
         require base_path('routes/console.php');
     }
 }

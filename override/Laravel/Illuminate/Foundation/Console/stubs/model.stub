@@ -1,0 +1,16 @@
+<?php
+
+namespace DummyNamespace;
+
+use Override\Laravel\Illuminate\Database\Eloquent\Model;
+
+/**
+ * Class DummyClass.
+ *
+ * @package DummyNamespace
+ * @mixin \Eloquent
+ */
+class DummyClass extends Model
+{
+    //
+}

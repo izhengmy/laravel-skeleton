@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
@@ -143,7 +143,7 @@ return [
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
-        Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
+        Override\Laravel\Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -158,7 +158,7 @@ return [
         Illuminate\Redis\RedisServiceProvider::class,
         Illuminate\Auth\Passwords\PasswordResetServiceProvider::class,
         Illuminate\Session\SessionServiceProvider::class,
-        Illuminate\Translation\TranslationServiceProvider::class,
+        Overtrue\LaravelLang\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
@@ -173,7 +173,10 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HorizonServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Override\Mews\Captcha\CaptchaServiceProvider::class,
 
     ],
 
