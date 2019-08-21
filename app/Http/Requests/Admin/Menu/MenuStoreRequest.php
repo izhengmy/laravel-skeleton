@@ -8,13 +8,13 @@ use Illuminate\Foundation\Http\FormRequest;
  * Class MenuStoreRequest.
  *
  * @package App\Http\Requests\Admin\Menu
- * @property int|null $parentId
- * @property string $path
- * @property string $name
- * @property string $icon
- * @property int $sort
- * @property bool $newWindow
- * @property bool $enabled
+ * @property-read int|null $parentId
+ * @property-read string $path
+ * @property-read string $name
+ * @property-read string $icon
+ * @property-read int $sort
+ * @property-read bool $newWindow
+ * @property-read bool $enabled
  */
 class MenuStoreRequest extends FormRequest
 {

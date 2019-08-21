@@ -8,9 +8,9 @@ use Illuminate\Foundation\Http\FormRequest;
  * Class ProfileUpdateRequest.
  *
  * @package App\Http\Requests\Admin\Account
- * @property string $username
- * @property string $mobileNumber
- * @property string $realName
+ * @property-read string $username
+ * @property-read string $mobileNumber
+ * @property-read string $realName
  */
 class ProfileUpdateRequest extends FormRequest
 {
