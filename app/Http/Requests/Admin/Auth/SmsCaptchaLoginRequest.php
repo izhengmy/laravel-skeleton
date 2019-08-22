@@ -9,7 +9,7 @@ use Illuminate\Foundation\Http\FormRequest;
  *
  * @package App\Http\Requests\Admin\Auth
  * @property-read string $mobileNumber
- * @property-read string $captcha
+ * @property-read string $smsCaptcha
  */
 class SmsCaptchaLoginRequest extends FormRequest
 {
@@ -32,7 +32,7 @@ class SmsCaptchaLoginRequest extends FormRequest
     {
         return [
             'mobileNumber' => 'required|china_mobile_number',
-            'captcha' => 'required|string',
+            'smsCaptcha' => 'required|string',
         ];
     }
 
@@ -45,7 +45,7 @@ class SmsCaptchaLoginRequest extends FormRequest
     {
         return [
             'mobileNumber' => '手机号码',
-            'captcha' => '短信验证码',
+            'smsCaptcha' => '短信验证码',
         ];
     }
 }

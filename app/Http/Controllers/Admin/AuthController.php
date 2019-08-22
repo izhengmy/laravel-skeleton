@@ -103,7 +103,7 @@ class AuthController extends Controller
      */
     public function smsCaptchaLogin(SmsCaptchaLoginRequest $request): JsonResponse
     {
-        $admin = $this->retrieveAdminBySmsCaptcha($request->mobileNumber, $request->captcha);
+        $admin = $this->retrieveAdminBySmsCaptcha($request->mobileNumber, $request->smsCaptcha);
         $token = $this->jwtGuard->login($admin);
 
         return $this->responseWithToken($token);
@@ -152,7 +152,7 @@ class AuthController extends Controller
      */
     public function resetPassword(ResetPasswordRequest $request): JsonResponse
     {
-        $admin = $this->retrieveAdminBySmsCaptcha($request->mobileNumber, $request->captcha);
+        $admin = $this->retrieveAdminBySmsCaptcha($request->mobileNumber, $request->smsCaptcha);
         $admin->password = $request->password;
         $admin->save();
 
@@ -163,17 +163,17 @@ class AuthController extends Controller
      * 通过短信验证码取回管理员.
      *
      * @param  string  $mobileNumber
-     * @param  string  $captcha
+     * @param  string  $smsCaptcha
      * @return \App\Models\Admin
      * @throws \App\Exceptions\AdminBusinessException
      */
-    protected function retrieveAdminBySmsCaptcha(string $mobileNumber, string $captcha): Admin
+    protected function retrieveAdminBySmsCaptcha(string $mobileNumber, string $smsCaptcha): Admin
     {
-        if (! SmsCaptcha::check($mobileNumber, $captcha, self::SMS_CAPTCHA_TYPE)) {
+        if (! SmsCaptcha::check($mobileNumber, $smsCaptcha, self::SMS_CAPTCHA_TYPE)) {
             throw AdminBusinessException::make(AdminCodes::AUTH_INVALID_SMS_CAPTCHA);
         }
 
-        SmsCaptcha::forget($mobileNumber, $captcha, self::SMS_CAPTCHA_TYPE);
+        SmsCaptcha::forget($mobileNumber, $smsCaptcha, self::SMS_CAPTCHA_TYPE);
 
         $admin = Admin::findByMobileNumber($mobileNumber, true);
 
