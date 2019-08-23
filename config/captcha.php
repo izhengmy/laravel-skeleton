@@ -99,7 +99,7 @@ return [
     'auth' => [
         'length' => 4,
         'width' => 120,
-        'height' => 36,
+        'height' => 40,
         'quality' => 90,
         'math' => false,
     ],
