@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\DB;
 use Kalnoy\Nestedset\NodeTrait;
 use Override\Laravel\Illuminate\Database\Eloquent\Model;
@@ -25,6 +26,7 @@ use Override\Laravel\Illuminate\Database\Eloquent\Model;
  * @property \Kalnoy\Nestedset\Collection $children
  * @property \Kalnoy\Nestedset\Collection $ancestors
  * @property \Kalnoy\Nestedset\Collection $descendants
+ * @property \Illuminate\Database\Eloquent\Collection $roles
  * @mixin \Eloquent
  */
 class Menu extends Model
@@ -62,6 +64,16 @@ class Menu extends Model
         'new_window' => 'bool',
         'enabled' => 'bool',
     ];
+
+    /**
+     * 关联角色模型.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class, 'role_menus');
+    }
 
     /**
      * Get the lft key name.
@@ -115,6 +127,24 @@ class Menu extends Model
             $this->descendants->each(function (Menu $menu) {
                 $menu->enabled = false;
                 $menu->save();
+            });
+        });
+    }
+
+    /**
+     * 移除菜单关联的角色（包含所有子孙级菜单）.
+     *
+     * @return void
+     * @throws \Throwable
+     */
+    public function detachRoles()
+    {
+        $this->load('descendants.roles');
+
+        DB::transaction(function () {
+            $this->roles()->detach();
+            $this->descendants->each(function (Menu $menu) {
+                $menu->roles()->detach();
             });
         });
     }

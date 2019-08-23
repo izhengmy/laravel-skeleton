@@ -131,9 +131,10 @@ class MenusController extends Controller
      */
     public function destroy(int $id)
     {
-        $menu = Menu::findOrFail($id);
+        $menu = Menu::with('roles')->findOrFail($id);
 
         DB::transaction(function () use ($menu) {
+            $menu->detachRoles();
             $menu->delete();
         });
 
