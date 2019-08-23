@@ -39,13 +39,13 @@ class AccountController extends Controller
     }
 
     /**
-     * 修改个人资料.
+     * 更新个人资料.
      *
      * @param  \App\Http\Requests\Admin\Account\ProfileUpdateRequest  $request
      * @return \App\Http\Resources\Admin\Account\ProfileResource
      * @throws \App\Exceptions\AdminBusinessException
      */
-    public function changeProfile(ProfileUpdateRequest $request): ProfileResource
+    public function updateProfile(ProfileUpdateRequest $request): ProfileResource
     {
         /** @var \App\Models\Admin $admin */
         $admin = $this->jwtGuard->user();
@@ -69,13 +69,13 @@ class AccountController extends Controller
     }
 
     /**
-     * 修改密码.
+     * 更新密码.
      *
      * @param  \App\Http\Requests\Admin\Account\PasswordUpdateRequest  $request
      * @return void
      * @throws \App\Exceptions\AdminBusinessException
      */
-    public function changePassword(PasswordUpdateRequest $request)
+    public function updatePassword(PasswordUpdateRequest $request)
     {
         /** @var \App\Models\Admin $admin */
         $admin = $this->jwtGuard->user();

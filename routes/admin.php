@@ -48,8 +48,8 @@ Route::prefix('/menus')->group(function () {
 
 Route::prefix('/account')->group(function () {
     Route::get('/profile', 'AccountController@profile');
-    Route::put('/profile', 'AccountController@changeProfile');
-    Route::put('/password', 'AccountController@changePassword');
+    Route::put('/profile', 'AccountController@updateProfile');
+    Route::put('/password', 'AccountController@updatePassword');
 });
 
 Route::get('/easy-sms-logs', 'EasySmsLogsController@index');
