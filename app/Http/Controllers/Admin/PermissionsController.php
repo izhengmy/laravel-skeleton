@@ -37,7 +37,8 @@ class PermissionsController extends Controller
      */
     public function index(): PermissionCollection
     {
-        $permissions = Permission::where('guard_name', $this->guardName)->get();
+        $query = Permission::where('guard_name', $this->guardName);
+        $permissions = is_paginate() ? $query->paginate() : $query->get();
 
         return new PermissionCollection($permissions);
     }

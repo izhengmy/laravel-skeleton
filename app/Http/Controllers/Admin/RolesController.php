@@ -39,7 +39,8 @@ class RolesController extends Controller
      */
     public function index(): RoleCollection
     {
-        $roles = Role::with('permissions')->where('guard_name', $this->guardName)->get();
+        $query = Role::with('permissions', 'menus')->where('guard_name', $this->guardName);
+        $roles = is_paginate() ? $query->paginate() : $query->get();
 
         return new RoleCollection($roles);
     }

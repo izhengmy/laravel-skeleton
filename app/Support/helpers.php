@@ -38,3 +38,15 @@ if (! function_exists('http_no_content')) {
         abort(204);
     }
 }
+
+if (! function_exists('is_paginate')) {
+    /**
+     * 是否分页.
+     *
+     * @return bool
+     */
+    function is_paginate()
+    {
+        return (bool) request()->input('paginate', true);
+    }
+}
