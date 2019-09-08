@@ -1023,16 +1023,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.8.32",
+            "version": "v5.8.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ee16d719516dfd77ed6c9538000bca49ded284e2"
+                "reference": "5a9e4d241a8b815e16c9d2151e908992c38db197"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ee16d719516dfd77ed6c9538000bca49ded284e2",
-                "reference": "ee16d719516dfd77ed6c9538000bca49ded284e2",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/5a9e4d241a8b815e16c9d2151e908992c38db197",
+                "reference": "5a9e4d241a8b815e16c9d2151e908992c38db197",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -1121,6 +1121,7 @@
             "suggest": {
                 "aws/aws-sdk-php": "Required to use the SQS queue driver and SES mail driver (^3.0).",
                 "doctrine/dbal": "Required to rename columns and drop SQLite columns (^2.6).",
+                "ext-gd": "Required to use Illuminate\\Http\\Testing\\FileFactory::image().",
                 "ext-pcntl": "Required to use all features of the queue worker.",
                 "ext-posix": "Required to use all features of the queue worker.",
                 "filp/whoops": "Required for friendly error pages in development (^2.1.4).",
@@ -1172,7 +1173,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-08-13T14:11:52+00:00"
+            "time": "2019-09-03T16:44:30+00:00"
         },
         {
             "name": "laravel/horizon",
