@@ -125,10 +125,12 @@ class AdminsController extends Controller
             $admin->fill([
                 'username' => $request->username,
                 'mobile_number' => $request->mobileNumber,
-                'password' => $request->password,
                 'real_name' => $request->realName,
                 'enabled' => $request->enabled,
             ]);
+            if ($request->has('password')) {
+                $admin->password = $request->password;
+            }
             $admin->save();
 
             try {
