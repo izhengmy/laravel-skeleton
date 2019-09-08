@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Admin;
+use App\Models\Menu;
 use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Database\Seeder;
@@ -11,14 +12,15 @@ class InitializeSeeder extends Seeder
      * Run the database seeds.
      *
      * @return void
+     * @throws \Throwable
      */
     public function run()
     {
         app('cache')->forget(config('permission.cache.key'));
 
         $this->createPermissions();
-        $this->createRoles();
         $this->createMenus();
+        $this->createRoles();
         $this->createAdmins();
     }
 
@@ -65,11 +67,13 @@ class InitializeSeeder extends Seeder
      * 创建角色.
      *
      * @return void
+     * @throws \Throwable
      */
     private function createRoles()
     {
         $role = Role::create(['name' => 'super-admin', 'cn_name' => '超级管理员']);
         $role->givePermissionTo(Permission::all());
+        $role->syncMenus(Menu::all());
     }
 
     /**
@@ -79,7 +83,93 @@ class InitializeSeeder extends Seeder
      */
     private function createMenus()
     {
+        $menus = [
+            [
+                'path' => '/dashboard',
+                'name' => 'Dashboard',
+                'icon' => 'dashboard',
+                'sort' => 255,
+                'new_window' => 0,
+                'enabled' => 1,
+            ],
+            [
+                'path' => '/system',
+                'name' => '系统管理',
+                'icon' => 'setting',
+                'sort' => 0,
+                'new_window' => 0,
+                'enabled' => 1,
+                'children' => [
+                    [
+                        'path' => '/system/permissions',
+                        'name' => '权限管理',
+                        'icon' => '',
+                        'sort' => 0,
+                        'new_window' => 0,
+                        'enabled' => 1,
+                    ],
+                    [
+                        'path' => '/system/roles',
+                        'name' => '角色管理',
+                        'icon' => '',
+                        'sort' => 0,
+                        'new_window' => 0,
+                        'enabled' => 1,
+                    ],
+                    [
+                        'path' => '/system/menus',
+                        'name' => '菜单管理',
+                        'icon' => '',
+                        'sort' => 0,
+                        'new_window' => 0,
+                        'enabled' => 1,
+                    ],
+                    [
+                        'path' => '/system/easy-sms-logs',
+                        'name' => 'EasySms 日志',
+                        'icon' => '',
+                        'sort' => 0,
+                        'new_window' => 0,
+                        'enabled' => 1,
+                    ],
+                    [
+                        'path' => config('app.url').'/telescope?token={token}',
+                        'name' => 'Telescope',
+                        'icon' => '',
+                        'sort' => 0,
+                        'new_window' => 1,
+                        'enabled' => 1,
+                    ],
+                    [
+                        'path' => config('app.url').'/horizon?token={token}',
+                        'name' => 'Horizon',
+                        'icon' => '',
+                        'sort' => 0,
+                        'new_window' => 1,
+                        'enabled' => 1,
+                    ],
+                ],
+            ],
+            [
+                'path' => '/admins',
+                'name' => '管理员管理',
+                'icon' => 'user-add',
+                'sort' => 0,
+                'new_window' => 0,
+                'enabled' => 1,
+            ],
+            [
+                'path' => '/account',
+                'name' => '个人中心',
+                'icon' => 'user',
+                'sort' => 0,
+                'new_window' => 0,
+                'enabled' => 1,
+            ],
+        ];
 
+        /** @noinspection PhpUndefinedMethodInspection */
+        Menu::rebuildTree($menus);
     }
 
     /**
