@@ -169,7 +169,7 @@ class AdminsController extends Controller
      */
     public function restore(int $id): AdminResource
     {
-        $admin = Admin::findOrFail($id);
+        $admin = Admin::withTrashed()->findOrFail($id);
 
         $this->authorize('admin.restore-admin', $admin);
 
