@@ -39,9 +39,10 @@ class Captcha extends BaseCaptcha
      *
      * @param  string  $config
      * @param  boolean  $api
-     * @return \Intervention\Image\ImageManager
+     * @return array|mixed
+     * @throws \Exception
      */
-    public function create($config = 'default', $api = false)
+    public function create(string $config = 'default', bool $api = false)
     {
         $result = parent::create($config, $api);
 
@@ -62,7 +63,7 @@ class Captcha extends BaseCaptcha
      * @return bool
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
-    public function check_api($value, $key)
+    public function check_api($value, $key): bool
     {
         $cacheKey = self::API_CACHE_KEY.$key;
 
