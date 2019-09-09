@@ -52,8 +52,8 @@ class AdminPolicy
      */
     protected function base(Admin $currentAdmin, Admin $admin)
     {
-        if ($admin->hasRole('root')) {
-            return $currentAdmin->hasRole('root');
+        if ($admin->hasRole('super-admin')) {
+            return $currentAdmin->hasRole('super-admin');
         }
 
         return true;
