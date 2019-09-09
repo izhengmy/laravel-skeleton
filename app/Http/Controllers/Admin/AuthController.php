@@ -43,6 +43,7 @@ class AuthController extends Controller
      * 获取图形验证码.
      *
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function captcha(): JsonResponse
     {
