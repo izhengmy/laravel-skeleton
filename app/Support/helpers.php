@@ -3,7 +3,7 @@
 use App\Support\Http;
 use Illuminate\Http\JsonResponse;
 
-if (! function_exists('http_ok')) {
+if (! function_exists('http_success')) {
     /**
      * 返回 HTTP 200 响应.
      *
