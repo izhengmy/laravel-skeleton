@@ -1,5 +1,38 @@
 # Laravel Skeleton
 
+基本 [Laravel](https://github.com/laravel/laravel) 框架开发的通用项目模板。
+
+## 功能模块
+
+### 开发相关
+
+- Laravel Telescope
+- Laravel Horizon
+
+### 后台管理系统
+
+- 授权相关
+    - 图形验证码
+    - 用户名密码登录
+    - 短信验证码登录
+    - 重置密码（找回密码）
+    - 退出登录
+- 权限相关
+    - 权限管理
+    - 角色管理
+- 菜单管理
+- 管理员管理
+- 个人中心
+    - 资料修改
+    - 密码修改
+- 短信发送日志
+
+## 前端支持
+
+### 后台管理系统
+
+[https://github.com/zmy96/antd-pro-admin-skeleton](https://github.com/zmy96/antd-pro-admin-skeleton)
+
 ## 服务器要求
 
 - Nginx >= 1.15.12
