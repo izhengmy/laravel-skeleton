@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.0.1 on 2019-09-09 16:59:36.
+ * Generated for Laravel 6.0.3 on 2019-09-11 09:00:49.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -16336,7 +16336,7 @@ namespace  {
              * Execute the query and get the first result.
              *
              * @param array $columns
-             * @return \Illuminate\Database\Eloquent\Model|object|null 
+             * @return \Illuminate\Database\Eloquent\Model|object|static|null 
              * @static 
              */ 
             public static function first($columns = array())
