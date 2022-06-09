@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  php:
+    build: 
+      context: ./docker/php
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/var/www/html'
+    ports:
+      - '8000:8000'
+    networks:
+      - laravel
+  redis:
+    build:
+      context: ./docker/redis
+      dockerfile: Dockerfile
+    volumes:
+      - './docker/.data/redis:/data'
+    ports:
+      - '6379:6379'
+    networks:
+      - laravel
+  mysql:
+    build:
+      context: ./docker/mysql
+      dockerfile: Dockerfile
+    environment:
+        - MYSQL_DATABASE=laravel
+        - MYSQL_USER=laravel
+        - MYSQL_PASSWORD=laravel
+        - MYSQL_ROOT_PASSWORD=root
+    volumes:
+        - './docker/.data/mysql:/var/lib/mysql'
+        - './docker/mysql/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d'
+    ports:
+      - '3306:3306'
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Codes;
+namespace App;
 
 abstract class AdminCodes
 {

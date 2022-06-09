@@ -31,7 +31,7 @@
 
 ### 后台管理系统
 
-[https://github.com/zmy96/antd-pro-admin-skeleton](https://github.com/zmy96/antd-pro-admin-skeleton)
+[https://github.com/izhengmy/antd-pro-admin-skeleton](https://github.com/izhengmy/antd-pro-admin-skeleton)
 
 ## 服务器要求
 
@@ -52,54 +52,28 @@
 
 ## 环境搭建/安装
 
-本地开发环境推荐使用 [laradock](https://github.com/laradock/laradock)。
-
-下文将在假定读者已经安装好了 [laradock](https://github.com/laradock/laradock) 的情况下进行说明。如果您还未安装 [laradock](https://github.com/laradock/laradock)，可以参照 [laradock 官方文档](http://laradock.io/) 进行安装配置。
-
-### php-worker 配置
-
-配置文件存放在 `/path/to/laradock/php-worker/supervisord` 目录下
-
-laravel-skeleton-scheduler.conf（用于启动 Cron Job）
-
-```conf
-[program:laravel-skeleton-scheduler]
-process_name=%(program_name)s_%(process_num)02d
-command=/bin/sh -c "while [ true ]; do (php /var/www/laravel-skeleton/artisan schedule:run --verbose --no-interaction &); sleep 60; done"
-autostart=true
-autorestart=true
-numprocs=1
-user=laradock
-redirect_stderr=true
-```
-
-laravel-skeleton-horizon.conf（用于管理 Laravel Horizon 进程）
-
-```conf
-[program:laravel-skeleton-horizon]
-process_name=%(program_name)s_%(process_num)02d
-command=php /var/www/laravel-skeleton/artisan horizon
-autostart=true
-autorestart=true
-numprocs=1
-user=laradock
-redirect_stderr=true
-```
-
 ### 基础安装
 
 ```bash
-$ docker-compose up -d nginx mysql php-worker redis
-$ docker-compose exec --user=laradock workspace bash
-$ git clone https://github.com/zmy96/laravel-skeleton.git
-$ cd laravel-skeleton
-$ composer install          # 安装依赖
-$ cp .env.example .env      # 根据实际情况修改你的配置项
-$ php artisan key:generate  # 生成密钥
-$ php artisan jwt:secret    # 生成 JWT 密钥
-$ php artisan migrate       # 数据库迁移
-$ php artisan db:seed       # 数据填充
+$ docker-compose build
+$ docker-compose up -d
+$ docker-compose exec php /bin/bash
+$ composer install
+$ cp .env.example .env
+$ php artisan key:generate
+$ php artisan jwt:secret
+$ php artisan migrate
+$ php artisan db:seed
+$ curl http://127.0.0.1:8000
 ```
+
+### Docker 容器连接信息
+
+Docker 容器 | 连接信息
+:- | :-
+PHP | Host: 127.0.0.1<br>Port: 8000
+MySQL | Host: 127.0.0.1<br>Port: 3306<br>Database: laravel<br>User: root/laravel<br>Password: root/laravel
+Redis | Host: 127.0.0.1<br>Port: 6379
 
 ## 扩展包使用情况
 
