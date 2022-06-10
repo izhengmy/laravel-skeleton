@@ -60,10 +60,11 @@ class Captcha extends BaseCaptcha
      *
      * @param  string  $value
      * @param  string  $key
+     * @param  string  $config
      * @return bool
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
-    public function check_api($value, $key): bool
+    public function check_api($value, $key, $config = 'default'): bool
     {
         $cacheKey = self::API_CACHE_KEY.$key;
 
