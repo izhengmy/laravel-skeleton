@@ -96,6 +96,17 @@ class Menu extends Model
     }
 
     /**
+     * @param  string  $path
+     * @return string
+     */
+    public function getPathAttribute(string $path): string
+    {
+        return strtr($path, [
+            '{app_url}' => config('app.url'),
+        ]);
+    }
+
+    /**
      * 启用所有父级菜单.
      *
      * @return void

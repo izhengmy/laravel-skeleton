@@ -24,10 +24,6 @@ class AppendToken
             return $response;
         }
 
-        if ($request->cookie('token')) {
-            return $response;
-        }
-
         if (empty($token = $request->input('token'))) {
             return $response;
         }

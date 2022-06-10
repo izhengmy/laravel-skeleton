@@ -133,7 +133,7 @@ class InitializeSeeder extends Seeder
                         'enabled' => 1,
                     ],
                     [
-                        'path' => config('app.url').'/telescope?token={token}',
+                        'path' => '{app_url}/telescope?token={token}',
                         'name' => 'Telescope',
                         'icon' => '',
                         'sort' => 0,
@@ -141,7 +141,7 @@ class InitializeSeeder extends Seeder
                         'enabled' => 1,
                     ],
                     [
-                        'path' => config('app.url').'/horizon?token={token}',
+                        'path' => '{app_url}/horizon?token={token}',
                         'name' => 'Horizon',
                         'icon' => '',
                         'sort' => 0,
