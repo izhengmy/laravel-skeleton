@@ -2,7 +2,7 @@
 
 namespace App\Exceptions;
 
-use App\Codes\AdminCodes;
+use App\AdminCodes;
 use Exception;
 
 class AdminBusinessException extends Exception

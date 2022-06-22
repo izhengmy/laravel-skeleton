@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Codes\AdminCodes;
+use App\AdminCodes;
 use App\Exceptions\AdminBusinessException;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\DB;

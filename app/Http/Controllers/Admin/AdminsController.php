@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Codes\AdminCodes;
+use App\AdminCodes;
 use App\Exceptions\AdminBusinessException;
 use App\Http\Requests\Admin\Admin\AdminStoreRequest;
 use App\Http\Requests\Admin\Admin\AdminUpdateRequest;
