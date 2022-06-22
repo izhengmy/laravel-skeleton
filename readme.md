@@ -6,7 +6,6 @@
 
 ### 开发相关
 
-- Laravel Telescope
 - Laravel Horizon
 
 ### 后台管理系统
@@ -79,7 +78,6 @@ Redis | Host: 127.0.0.1<br>Port: 6379
 
 扩展包 | 描述 | 应用场景
 :- | :- | :-
-[laravel/telescope](https://github.com/laravel/telescope) | Laravel 官方的优雅调试工具 | 开发调试
 [laravel/horizon](https://github.com/laravel/horizon) | Laravel 官方的队列管理工具 | 队列调度、监听队列的使用情况
 [predis/predis](https://github.com/nrk/predis) | Redis PHP Client 组件 | 连接 Redis 使用
 [overtrue/laravel-lang](https://github.com/overtrue/laravel-lang) | Laravel 多语言支持组件 | validation 错误信息本地化

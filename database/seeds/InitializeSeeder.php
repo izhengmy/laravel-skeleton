@@ -32,7 +32,6 @@ class InitializeSeeder extends Seeder
     private function createPermissions()
     {
         $permissions = [
-            ['name' => 'telescope', 'cn_name' => 'Telescope'],
             ['name' => 'horizon', 'cn_name' => 'Horizon'],
             ['name' => 'permissions.index', 'cn_name' => '权限列表'],
             ['name' => 'permissions.store', 'cn_name' => '创建权限'],
@@ -130,14 +129,6 @@ class InitializeSeeder extends Seeder
                         'icon' => '',
                         'sort' => 0,
                         'new_window' => 0,
-                        'enabled' => 1,
-                    ],
-                    [
-                        'path' => '{app_url}/telescope?token={token}',
-                        'name' => 'Telescope',
-                        'icon' => '',
-                        'sort' => 0,
-                        'new_window' => 1,
                         'enabled' => 1,
                     ],
                     [
